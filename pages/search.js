@@ -20,12 +20,12 @@ function Search({ searchResults }) {
     //   style={{ background: "url(/home-page.jpg)" }}style={{ background: "url(/home-page.jpg)" }}
 
     <div>
-      <Header placeholder={`${location} |${range} | ${noOfGuests} guests`} />
+      <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">
-            300+ Stays -${range} - for - {noOfGuests} number of guests
+            300+ Stays - {range} - for - {noOfGuests} number of guests
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6 text-gray-500 whitespace-nowrap">
             Stays in {location}
