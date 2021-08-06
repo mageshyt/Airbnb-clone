@@ -5,6 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import Footer from "../components/Footer";
 import InfoCard from "../components/InfoCard";
 import { format } from "date-fns";
+import Scroll from "../components/Scroll";
 
 function Search({ searchResults }) {
   const router = useRouter();
@@ -17,8 +18,10 @@ function Search({ searchResults }) {
 
   return (
     //   style={{ background: "url(/home-page.jpg)" }}style={{ background: "url(/home-page.jpg)" }}
+
     <div>
       <Header placeholder={`${location} |${range} | ${noOfGuests} guests`} />
+
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">

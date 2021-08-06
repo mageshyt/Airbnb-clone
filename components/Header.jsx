@@ -1,7 +1,7 @@
 import Image from "next/image";
 // search icon
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //! icons
 import {
   MenuIcon,
@@ -16,17 +16,37 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/dist/client/router";
-const Header = ({ placeholder }) => {
-  const [searchInput, setSearchInput] = useState("");
 
+const Header = ({ placeholder }) => {
+  //!search input
+  const [searchInput, setSearchInput] = useState("");
+  //* set date on selection
   const [startDate, setStartDate] = useState(new Date());
 
   const [endDate, setEndDate] = useState(new Date());
-
+  //* get no of guests
   const [noOfGuests, setNoOfGuests] = useState(1);
+  // *change background color: ;
+  const [colorChange, setColorChange] = useState(false);
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setColorChange(true);
+    } else {
+      setColorChange(false);
+    }
+  };
+  if (typeof window === "undefined") {
+    global.window = {};
+  } else {
+    global.window.addEventListener("scroll", changeNavbarColor);
+  }
 
+  // this.addEventListener("scroll", changeBackgroundOnScroll);
+  //!router
   const router = useRouter();
+
   //! selectionRange
+
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -42,7 +62,7 @@ const Header = ({ placeholder }) => {
   const resetInput = () => {
     setSearchInput("");
   };
-
+  // !search
   const search_url = () => {
     router.push({
       pathname: "/search",
@@ -55,7 +75,13 @@ const Header = ({ placeholder }) => {
     });
   };
   return (
-    <header className="sticky top-0 p-5  z-50 grid  grid-cols-3 bg-white shadow-md md:px-10 md:shadow-sm">
+    <header
+      className={
+        colorChange
+          ? "navbar transform transition duration-600 ease-in bg-[#121212]  "
+          : "navbar bg-transparent"
+      }
+    >
       {/* Left  for logo*/}
       <div
         onClick={() => router.push("/")}
@@ -69,23 +95,24 @@ const Header = ({ placeholder }) => {
         />
       </div>
       {/*  middle for search  */}
-      <div className=" flex item-center md:border-2 rounded-full p-2  py-2">
+      <div className=" flex  item-center md:border-2  rounded-full p-2  py-2">
         <input
           type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder={placeholder || "Start your search"}
+          placeholder="Start your search"
           className="flex-grow pl-5 outline-none bg-transparent "
         />
-        <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 rounded-full  text-white p-2 cursor-pointer md:gap-x-28" />
+        {/* <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 rounded-full  text-white p-2 cursor-pointer md:gap-x-28" /> */}
+        <SearchIcon className="hidden md:inline-flex h-8 bg-[#8502ff] rounded-full  text-white p-2 cursor-pointer md:gap-x-28" />
       </div>
       {/* Right */}
-      <div className="flex items-center text-gray-500 justify-end  space-x-4">
-        <p className="hidden md:inline cursor-pointer">Become a host</p>
-        <GlobeAltIcon className="h-6" />
+      <div className="flex items-center text-gray-200 justify-end  space-x-4">
+        <p className="hidden md:inline font-medium  cursor-pointer">
+          Become a host
+        </p>
+        <GlobeAltIcon className="hidden h-6 text-gray-300   md:inline" />
         <div className="flex items-center  space-x-2 rounded-full border-2 p-2">
-          <MenuIcon className="h-6" />
-          <UserCircleIcon className="h-6" />
+          <MenuIcon className="h-6 text-gray-300 " />
+          <UserCircleIcon className="h-6 text-gray-300" />
         </div>
       </div>
       {searchInput && (
