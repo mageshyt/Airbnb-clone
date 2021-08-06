@@ -21,7 +21,7 @@ function InfoCard({ img, location, title, description, star, price, total }) {
   return (
     <div>
       <Bounce right cascade>
-        <Container className="sm:grid sm:grid-row-2 lg:flex py-7 px-2 cursor-pointer hover:opacity-80 pr-4 mb-4 transition duration-200 ease-out border-b first:border-t  hover:shadow-lg rounded-2xl">
+        <Container className="grid grid-row-2 lg:flex xl:flex  md:flex  py-7 px-2 cursor-pointer hover:opacity-80 pr-4 mb-4 transition duration-200 ease-out border-b first:border-t  hover:shadow-lg rounded-2xl">
           {/* Image */}
           <div className="relative 2xl:h-24 2xl:w-40 h-[200px] w-50   md:h-52 md:w-80 flex-shrink-0">
             <Image
