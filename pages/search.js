@@ -32,11 +32,11 @@ function Search({ searchResults }) {
           </h1>
 
           <div className="hidden  lg:inline-flex mb-5 space-x-5">
-            <p className="button">Cancellation Flexibility</p>
-            <p className="button">Type of place</p>
-            <p className="button">price</p>
-            <p className="button">Rooms and Beds</p>
-            <p className="button">More filters</p>
+            <button className="button">Cancellation Flexibility</button>
+            <button className="button">Type of place</button>
+            <button className="button">price</button>
+            <button className="button">Rooms and Beds</button>
+            <button className="button">More filters</button>
           </div>
 
           {/* Display Result */}
