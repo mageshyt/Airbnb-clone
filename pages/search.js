@@ -5,7 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import Footer from "../components/Footer";
 import InfoCard from "../components/InfoCard";
 import { format } from "date-fns";
-import Scroll from "../components/Scroll";
+import Map from "../components/Map";
 
 function Search({ searchResults }) {
   const router = useRouter();
@@ -57,6 +57,11 @@ function Search({ searchResults }) {
             )}
             {/* {console.log("-->", searchResults)} */}
           </div>
+        </section>
+        {/* Map */}
+        <section className="rounded-xl hidden xl:inline-flex xl:min-w-[600px]">
+          {/* <section> */}
+          <Map searchResults={searchResults} />
         </section>
       </main>
       <Footer />
