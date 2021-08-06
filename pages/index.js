@@ -8,8 +8,8 @@ import SmallCad from "../components/SmallCad";
 
 export default function Home({ exploreData, CardData }) {
   return (
-    // <div className="">
-    <div className="bg-[#050404] text-white">
+    <div className="">
+      {/* // <div className="bg-[#050404] text-white">  */}
       <Head>
         <title>Airbnb</title>
         <link rel="icon" href="/favicon.ico" />
